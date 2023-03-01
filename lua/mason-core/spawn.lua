@@ -9,7 +9,7 @@ local process = require "mason-core.process"
 ---@type JobSpawn
 local spawn = {
     _aliases = {
-        npm = platform.is.win and "npm.cmd" or "npm",
+        npm = platform.is.win and "npm.exe" or "npm",
         gem = platform.is.win and "gem.cmd" or "gem",
         composer = platform.is.win and "composer.bat" or "composer",
         gradlew = platform.is.win and "gradlew.bat" or "gradlew",
