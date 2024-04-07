@@ -210,7 +210,7 @@ local function check_languages()
             name = "luarocks",
             relaxed = true,
             version_check = function(version)
-                local _, _, major = version:find "(%d+)%.(%d)%.(%d)"
+                local _, _, major = version:find "(%d+)%.(%d+)%.(%d+)"
                 if not (tonumber(major) >= 3) then
                     -- Because of usage of "--dev" flag
                     return "Luarocks version must be >= 3.0.0."
@@ -276,24 +276,6 @@ local function check_languages()
                     args = { "-version" },
                     name = "JAVA_HOME",
                     use_stderr = true,
-                    relaxed = true,
-                }
-            end
-        end,
-        function()
-            a.scheduler()
-            if vim.g.python3_host_prog then
-                check {
-                    cmd = vim.fn.expand(vim.g.python3_host_prog),
-                    args = { "--version" },
-                    name = "python3_host_prog",
-                    relaxed = true,
-                }
-                a.scheduler()
-                check {
-                    cmd = vim.fn.expand(vim.g.python3_host_prog),
-                    args = { "-m", "pip", "--version" },
-                    name = "python3_host_prog pip",
                     relaxed = true,
                 }
             end
